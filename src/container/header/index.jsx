@@ -3,8 +3,17 @@ import { Link } from "react-router-dom";
 
 import location from "../../assets/Location.png";
 import user from "../../assets/Group 108.png";
+import { useContext } from "react";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const Header = () => {
+  const { langType, lang, setLangType } = useContext(LanguageContext);
+
+  const handleLang = (e) => {
+    setLangType(e.target.value);
+    localStorage.setItem("language", e.target.value);
+  };
+
   return (
     <header>
       <div className="container">
@@ -12,21 +21,22 @@ const Header = () => {
           <nav className="navbar__one">
             <div className="nav-brand">
               <img src={location} alt="Who is loaction-?" />
-              <select>
-                <option value="1">Москва</option>
-                <option value="2">Toshkent</option>
+              <select value={langType} onChange={handleLang}>
+                <option value="ru">Москва</option>
+                <option value="uz">Toshkent</option>
               </select>
             </div>
-            <Link className="nav__link">Проверить адрес</Link>
+            <Link className="nav__link">{lang.adres}</Link>
             <Link className="nav__link">
-              Среднее время доставки*:<b>00:24:19</b>
+              {lang.vremya}
+              <b> 00:24:19</b>
             </Link>
           </nav>
           <nav className="navbar__two">
-            <Link className="nav__link">Время работы: с 11:00 до 23:00</Link>
+            <Link className="nav__link">{lang.pabota}</Link>
             <div className="nav__user">
               <img src={user} alt="" />
-              <Link className="nav__link">Войти в аккаунт</Link>
+              <Link className="nav__link">{lang.akkaunt}</Link>
             </div>
           </nav>
         </div>

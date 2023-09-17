@@ -1,3 +1,4 @@
+// import { useContext } from "react";
 import Cards from "../container/cards";
 import Kombo from "../container/cards/Kombo";
 import Sous from "../container/cards/Sous";
@@ -11,8 +12,10 @@ import PizzaCard from "../container/pizza";
 import Section from "../container/section";
 
 import "./HomePage.scss";
+// import { LanguageContext } from "../context/LanguageContext";
 
 const HomePage = () => {
+  // const {lang}=useContext(LanguageContext)
   return (
     <div>
       <Header />
